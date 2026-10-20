@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- SEO:START — the builder rewrites title / description / keywords for search (see CLAUDE.md) -->
+  <title>Split PDF into Pages or Ranges – Free, Private, No Upload</title>
+  <meta name="description" content="Split a PDF into single pages, custom page ranges or equal chunks in your browser. Free, no upload, no sign up, works offline. Save the parts as a ZIP.">
+  <meta name="keywords" content="split pdf, split pdf into pages, extract pages from pdf, separate pdf pages, split pdf by page range, pdf splitter free, split pdf offline, pdf page extractor">
+  <!-- SEO:END -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f14" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://turhe123.github.io/split-pdf-pages-local/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Split PDF by Pages – Free, Private, In Your Browser">
+  <meta property="og:description" content="Split a PDF into single pages or custom ranges in your browser and save them as a ZIP, nothing uploaded. Free and open source, nothing is uploaded, works offlin">
+  <meta property="og:url" content="https://turhe123.github.io/split-pdf-pages-local/">
+  <meta property="og:image" content="https://turhe123.github.io/split-pdf-pages-local/docs/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Split PDF by Pages">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Split PDF by Pages – Free, Private, In Your Browser">
+  <meta name="twitter:description" content="Split a PDF into single pages or custom ranges in your browser and save them as a ZIP, nothing uploaded. Free and open source, nothing is uploaded, works offlin">
+  <meta name="twitter:image" content="https://turhe123.github.io/split-pdf-pages-local/docs/og.png">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Split PDF by Pages",
+    "alternateName": "Split PDF by Pages – Free, Private, In Your Browser",
+    "description": "Split a PDF into single pages or custom ranges in your browser and save them as a ZIP, nothing uploaded. Free and open source, nothing is uploaded, works offlin",
+    "url": "https://turhe123.github.io/split-pdf-pages-local/",
+    "image": "https://turhe123.github.io/split-pdf-pages-local/docs/og.png",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Works offline after the first visit.",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "license": "https://opensource.org/licenses/MIT",
+    "softwareVersion": "1.0.0",
+    "author": { "@type": "Person", "name": "Or Davidai Bachar", "url": "https://github.com/turhe123" },
+    "sameAs": ["https://github.com/turhe123/split-pdf-pages-local"]
+  }
+  </script>
+  <script src="vendor/pdf-lib/pdf-lib.min.js" defer></script>
+  <script src="vendor/jszip/jszip.min.js" defer></script>
+  <!-- Page views are counted with GoatCounter: no cookies, no personal data, open source. -->
+  <script data-goatcounter="https://turhe123.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#tool">Skip to the tool</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="./" aria-label="Split PDF by Pages home">
+        <img class="brand__icon" src="icon.svg" alt="" width="28" height="28">
+        <span class="brand__name">Split PDF by Pages</span>
+      </a>
+      <nav class="site-nav" aria-label="Page">
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/turhe123/split-pdf-pages-local" rel="noopener">GitHub</a>
+        <a href="https://turhe123.github.io/web-tools/" rel="noopener" class="site-nav__more">More tools</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <!-- HERO:START — the builder may refine the headline and promise; keep the trust badges -->
+      <h1 class="hero__title">Split PDF by Pages</h1>
+      <p class="hero__lead">Split a PDF into single pages or custom ranges in your browser and save them as a ZIP, nothing uploaded.</p>
+      <!-- HERO:END -->
+      <ul class="badges" aria-label="Why this tool is safe to use">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Runs in your browser, files never leave your device</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Free, open source, no account, no ads</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 9.5 17 19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Works offline after the first visit</li>
+      </ul>
+    </section>
+
+    <section class="container" id="tool" aria-labelledby="tool-title">
+      <div class="tool-card">
+        <!-- TOOL:START — the builder replaces everything between these markers with the real tool UI -->
+        <h2 id="tool-title" class="visually-hidden">Split PDF by Pages</h2>
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose a PDF or drop it here">
+          <label class="visually-hidden" for="file-input">Choose a PDF</label>
+          <input class="dropzone__input" id="file-input" type="file" accept="application/pdf,.pdf" aria-describedby="dropzone-hint">
+          <svg class="dropzone__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="dropzone__title" id="dropzone-title">Drop a PDF here or <span class="link">choose a file</span></p>
+          <p class="dropzone__hint" id="dropzone-hint">One PDF at a time. Nothing is uploaded, everything happens on this device.</p>
+        </div>
+        <div class="file-info" id="file-info" aria-live="polite" hidden></div>
+        <div class="split-options" id="options" hidden>
+          <fieldset class="segmented">
+            <legend class="field__label">How to split</legend>
+            <div class="segmented__track">
+              <input type="radio" name="mode" id="mode-every" value="every" checked><label for="mode-every">Every page</label>
+              <input type="radio" name="mode" id="mode-ranges" value="ranges"><label for="mode-ranges">Custom ranges</label>
+              <input type="radio" name="mode" id="mode-chunk" value="chunk"><label for="mode-chunk">Fixed chunks</label>
+            </div>
+          </fieldset>
+          <div class="field" id="ranges-field" hidden>
+            <label for="ranges">Page ranges</label>
+            <input type="text" id="ranges" placeholder="1-3, 4, 5-8" autocomplete="off" spellcheck="false" inputmode="text" aria-describedby="ranges-hint ranges-error">
+            <p class="field__hint" id="ranges-hint">Each comma-separated group becomes one file. Use <code>end</code> for the last page. Press Enter to refresh the list.</p>
+            <p class="field__error" id="ranges-error" role="alert" hidden></p>
+            <label class="check"><input type="checkbox" id="merge"> Merge ranges into one file</label>
+          </div>
+          <div class="field" id="chunk-field" hidden>
+            <label for="chunk">Pages per file</label>
+            <input type="number" id="chunk" min="1" step="1" value="1" inputmode="numeric" aria-describedby="chunk-error">
+            <p class="field__error" id="chunk-error" role="alert" hidden></p>
+          </div>
+          <div class="split-preview">
+            <h3 class="split-preview__title" id="preview-title">Files to be created</h3>
+            <ol class="split-preview__list" id="preview" aria-labelledby="preview-title"></ol>
+          </div>
+          <button type="button" class="btn btn--primary btn--block" id="split">Split PDF</button>
+          <div class="split-progress" id="progress" hidden>
+            <div class="progress" role="progressbar" aria-label="Split progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progress-bar"></span></div>
+            <p class="split-progress__text"><span class="spinner" aria-hidden="true"></span><span id="progress-text" aria-live="polite"></span></p>
+          </div>
+        </div>
+        <div class="results" id="results" aria-live="polite"></div>
+        <!-- TOOL:END -->
+      </div>
+    </section>
+
+    <section class="container section" id="how" aria-labelledby="how-title">
+      <h2 id="how-title" class="section__title">How it works</h2>
+      <!-- HOW:START — three honest steps for this tool -->
+      <ol class="steps">
+        <li><strong>Open your PDF.</strong> Drop it on the page or pick it. It is read into this tab's memory and never leaves your device. Password-protected PDFs are not supported.</li>
+        <li><strong>Choose how to cut it.</strong> Every page as its own file, your own ranges such as 1-3, 5, 8-end, or fixed chunks of N pages. The list shows each file name and its pages before anything runs.</li>
+        <li><strong>Split and save.</strong> New PDFs are built in your browser. Download them one by one or all together as a ZIP.</li>
+      </ol>
+      <!-- HOW:END -->
+    </section>
+
+    <section class="container section" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section__title">Questions, answered</h2>
+      <!-- FAQ:START — 4 to 6 questions; keep the privacy, offline and AI answers -->
+      <details class="faq" open>
+        <summary>Are my files uploaded anywhere?</summary>
+        <p>No. Split PDF by Pages runs entirely in your browser. Your PDF is read into memory on your device, split with JavaScript, and never sent to a server, which matters for bank statements, contracts and scans. You can disconnect from the internet and it keeps working.</p>
+      </details>
+      <details class="faq">
+        <summary>How do I extract just a few pages into one PDF?</summary>
+        <p>Choose Custom ranges, type the pages you want, for example 2, 5-7, and tick Merge ranges into one file. You get a single PDF with those pages in that order. Ranges can overlap, so a page you list twice appears twice.</p>
+      </details>
+      <details class="faq">
+        <summary>What range formats are accepted?</summary>
+        <p>Single pages (4), ranges with a hyphen or en dash (1-3 or 1–3), the word end for the last page (5-end), and commas between groups. Spaces and a trailing comma are fine. A backwards range like 5-3 or a page past the end is flagged under the field instead of guessed.</p>
+      </details>
+      <details class="faq">
+        <summary>Is it really free?</summary>
+        <p>Yes. It is open source under the MIT license, with no account, no daily limits and no ads. If it saves you a paid subscription, you can say thanks on Ko-fi.</p>
+      </details>
+      <details class="faq">
+        <summary>Does it work offline?</summary>
+        <p>Yes. After your first visit the page is cached by a service worker, so it loads without a connection. You can also install it from your browser's menu as an app.</p>
+      </details>
+      <details class="faq">
+        <summary>Was this written by AI?</summary>
+        <p>Yes. Split PDF by Pages was generated by Claude Code from a written specification inside an automated pipeline, with a test suite that runs in a real browser. The full source is on GitHub, so you can read every line before you trust it with your files.</p>
+      </details>
+      <!-- FAQ:END -->
+    </section>
+
+    <section class="container section" id="support">
+      <div class="support-card">
+        <h2 class="section__title">Built by one person, given away for free</h2>
+        <p>Split PDF by Pages is a free alternative to paid tools like Smallpdf Split PDF. If it earns a place in your bookmarks, a coffee keeps the updates coming.</p>
+        <a class="btn btn--kofi" href="https://ko-fi.com/leodavidai" rel="noopener">☕ Support Or on Ko-fi</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="site-footer__links">
+        <a href="https://github.com/turhe123/split-pdf-pages-local" rel="noopener">Source on GitHub</a> ·
+        <a href="https://github.com/turhe123/split-pdf-pages-local/issues" rel="noopener">Report a bug</a> ·
+        <a href="https://turhe123.github.io/web-tools/" rel="noopener">More free web tools</a> ·
+        <a href="https://ko-fi.com/leodavidai" rel="noopener">Ko-fi</a>
+      </p>
+      <p class="site-footer__disclosure"><strong>Built with AI.</strong> Split PDF by Pages was written by Claude Code inside an automated pipeline from a plain-English spec, as a clean-room implementation: no code or assets from any commercial product. It runs entirely in your browser, makes no network requests except an anonymous, cookieless page-view count, and has had less human review than hand-written software. Bug reports and pull requests are welcome.</p>
+      <p class="site-footer__copy">© 2026 Or Davidai Bachar · MIT License · <span id="sw-status" class="sw-status" aria-live="polite"></span></p>
+    </div>
+  </footer>
+
+  <script type="module" src="site.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

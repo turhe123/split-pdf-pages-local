@@ -1,0 +1,10 @@
+{
+  "name": "jszip",
+  "version": "3.10.1",
+  "license": "MIT",
+  "entry": "vendor/jszip/jszip.min.js (classic script, global JSZip)",
+  "sources": {
+    "jszip.min.js": "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js",
+    "LICENSE": "https://cdn.jsdelivr.net/npm/jszip@3.10.1/LICENSE.markdown"
+  }
+}
